@@ -20,6 +20,7 @@ package io.github.theluca98.textapi;
 import net.minecraft.server.v1_8_R2.IChatBaseComponent;
 import net.minecraft.server.v1_8_R2.PacketPlayOutTitle;
 import net.minecraft.server.v1_8_R2.PlayerConnection;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
@@ -49,6 +50,12 @@ public class Title {
             IChatBaseComponent subtitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
             PacketPlayOutTitle subtitlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subtitleComponent);
             pc.sendPacket(subtitlePacket);
+        }
+    }
+    
+    public void sendToAll() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            send(player);
         }
     }
 
