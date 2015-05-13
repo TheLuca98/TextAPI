@@ -24,8 +24,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
+/**
+ * Utility class for sending action bar messages to players.
+ * @author Luca
+ */
 public class ActionBar {
     
+    /**
+     * Sends an action bar message to a specific player.
+     * @param player The player to send the message to.
+     * @param message The message to send.
+     */
     public static void send(Player player, String message) {
         PlayerConnection pc = ((CraftPlayer) player).getHandle().playerConnection;
         IChatBaseComponent component = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
@@ -33,6 +42,10 @@ public class ActionBar {
         pc.sendPacket(packet);
     }
     
+    /**
+     * Sends an action bar message to all online players.
+     * @param message The message to send.
+     */
     public static void sendToAll(String message) {
         for (Player player : Bukkit.getOnlinePlayers()) {
             send(player, message);
