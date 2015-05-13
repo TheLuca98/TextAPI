@@ -43,15 +43,13 @@ To send action bar messages we provide a simple utility static method:
 ```
 ActionBar.send(player, message);
 ```
+* **[Read the JavaDocs](https://theluca98.github.io/TextAPI/)**
+
 ## Notes
 Because this plugin depends on NMS classes, it might break each
 time Minecraft (and Spigot) update. If that's the case, I will
 try to update it as soon as possible, but I cannot make any
 promises about this.
-
-Also, since this library is extremely simple and straightforward,
-I haven't included any JavaDocs. However, I might add them in the
-future, if requested.
 
 ## License
 This library is published under the terms of the GNU General
