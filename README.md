@@ -43,7 +43,7 @@ To send action bar messages we provide a simple utility static method:
 ```
 ActionBar.send(player, message);
 ```
-* **[Read the JavaDocs](https://theluca98.github.io/TextAPI/)**
+**For a complete documentation, please refer to the [JavaDocs](https://theluca98.github.io/TextAPI/)**.
 
 ## Notes
 Because this plugin depends on NMS classes, it might break each
