@@ -1,6 +1,6 @@
 /*
 This file is part of TextAPI.
-Copyright (C) 2015 Luca P. <https://github.com/TheLuca98>
+Copyright (c) 2015 Luca P. <https://github.com/TheLuca98>
 
 TextAPI is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -9,7 +9,7 @@ the Free Software Foundation, either version 3 of the License, or
 
 TextAPI is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
@@ -17,11 +17,11 @@ along with TextAPI. If not, see <http://www.gnu.org/licenses/>.
 */
 package io.github.theluca98.textapi;
 
-import net.minecraft.server.v1_8_R2.IChatBaseComponent;
-import net.minecraft.server.v1_8_R2.PacketPlayOutTitle;
-import net.minecraft.server.v1_8_R2.PlayerConnection;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
+import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
+import net.minecraft.server.v1_8_R3.PlayerConnection;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 /**

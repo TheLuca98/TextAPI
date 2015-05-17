@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
-    <version>1.8.3-SNAPSHOT</version>
+    <version>1.8.4-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.8.3-R0.1-SNAPSHOT</version>
+            <version>1.8.4-R0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
