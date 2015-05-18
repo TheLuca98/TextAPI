@@ -8,7 +8,9 @@ easy way to use those features, without having to mess with NMS.
 ## Compile
 In order to compile this library you need to have
 [Apache Maven](https://maven.apache.org) installed on your
-computer.
+computer and the latest version of
+[CraftBukkit](https://hub.spigotmc.org) available in your local
+Maven repository.
 
 First, download a copy of this repository on your computer. If
 you have Git installed, we recommend using `git clone`.
