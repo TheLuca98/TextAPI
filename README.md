@@ -26,7 +26,7 @@ adding it to the `<dependencies>` section of your POM file:
 <dependency>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
-    <version>1.8.3-SNAPSHOT</version>
+    <version>1.8.7-SNAPSHOT</version>
 </dependency>
 ```
 You might also need to include TextAPI in your JAR file by using
