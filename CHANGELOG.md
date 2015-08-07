@@ -1,7 +1,7 @@
 ###TextAPI 2.0 Changelog
 * TextAPI has been re-licensed under the GNU Lesser General Public License.
-* `ActionBar` is now an actual class. It now works similarly to `Title`.
-  * As a consequence, the static utility methods have been removed from it.
+* `ActionBar` is now an actual class. It works similarly to `Title`.
+  * As a consequence, the static methods have been deprecated.
 * Both `Title` and `ActionBar` now also support JSON for formatting text.
   * Please note that normal text is still supported.
 * Access to CraftBukkit and Minecraft Server classes is now done with Reflection.

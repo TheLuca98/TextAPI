@@ -112,4 +112,29 @@ public class ActionBar {
         this.json = json;
     }
 
+    /**
+     * This method has been kept just to ensure backwards compatibility with older versions of TextAPI.
+     * It is not supported and will be removed in a future release.
+     *
+     * @param player  The player to send the message to.
+     * @param message The message to send.
+     * @deprecated Please create a new {@link ActionBar} instance instead.
+     */
+    @Deprecated
+    public static void send(Player player, String message) {
+        new ActionBar(message).send(player);
+    }
+
+    /**
+     * This method has been kept just to ensure backwards compatibility with older versions of TextAPI.
+     * It is not supported and will be removed in a future release.
+     *
+     * @param message The message to send.
+     * @deprecated Please create a new {@link ActionBar} instance instead.
+     */
+    @Deprecated
+    public static void sendToAll(String message) {
+        new ActionBar(message).sendToAll();
+    }
+
 }
