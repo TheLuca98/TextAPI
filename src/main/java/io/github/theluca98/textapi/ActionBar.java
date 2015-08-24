@@ -33,7 +33,7 @@ import java.util.logging.Logger;
 public class ActionBar {
 
     /**
-     * Used to toggle debug messages. Disabled by default.a
+     * Used to toggle debug messages. Disabled by default.
      */
     public static boolean DEBUG;
 
