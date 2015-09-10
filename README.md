@@ -2,7 +2,7 @@
 At the moment, Bukkit and Spigot API do not provide a way to use
 two important features that have been available with the release
 of Minecraft 1.8: titles and custom action bar messages. This
-extremely lightweigth library aims to provide to developers an
+extremely lightweight library aims to provide to developers an
 easy way to use those features, without having to mess with NMS.
 
 ## Compile
