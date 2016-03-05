@@ -6,17 +6,20 @@ extremely lightweight library aims to provide to developers an
 easy way to use those features, without having to mess with NMS.
 
 ## Compile
-In order to compile this library you need to have
-[Apache Maven](https://maven.apache.org) installed on your
-computer. Since TextAPI 2.0, CraftBukkit is no longer a required
-dependency.
+If you have [Git](https://git-scm.com) and [Maven](https://maven.apache.org)
+installed, downloading and compiling TextAPI is fairly easy:
+```
+git clone https://github.com/TheLuca98/TextAPI.git
+cd TextAPI
+mvn
+```
+This will compile and install TextAPI into your local Maven
+repository as well as generating the JavaDocs, which you'll be
+able to find in the subdirectory `target/site/apidocs`.
 
-First, download a copy of this repository on your computer. If
-you have Git installed, it is recommended to use `git clone`.
-
-Once you have downloaded the repository, you can easily compile
-TextAPI by running `mvn` (if that doesn't work, use `mvn clean
-install`).
+Alternatively, you can simply download the JAR from the
+[Releases](https://github.com/TheLuca98/TextAOI/releases) page and
+import it in your IDE.
 
 ## Install
 If you use Maven, make sure to include TextAPI as a dependency by
@@ -25,11 +28,11 @@ adding it to the `<dependencies>` section of your POM file:
 <dependency>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
-    <version>1.8.8-R2.0</version>
+    <version>1.9-R2.1</version>
 </dependency>
 ```
-You might also need to include TextAPI in your JAR file by using
-the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/).
+You will also need to include TextAPI in your JAR file by using
+the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin).
 
 ## Usage
 Creating a Title instance and sending it to a player is very simple:
@@ -42,7 +45,8 @@ Action bar messages work similarly:
 ActionBar bar = new ActionBar("Hello world");
 bar.send(player);
 ```
-**Please refer to the [JavaDocs](https://theluca98.github.io/TextAPI/) for the full documentation.**
+**Please refer to the [JavaDocs](https://theluca98.github.io/TextAPI)
+for the full documentation.**
 
 ## Notes
 Because this plugin doesn't directly depend on NMS classes thanks to

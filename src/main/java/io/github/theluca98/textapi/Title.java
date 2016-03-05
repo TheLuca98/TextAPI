@@ -37,7 +37,10 @@ public class Title {
 
     /**
      * Used to toggle debug messages. Disabled by default.
+     *
+     * @deprecated No longer in use.
      */
+    @Deprecated
     public static boolean DEBUG;
 
     /**
@@ -106,12 +109,8 @@ public class Title {
                         subtitlePacket = playPacket.getConstructor(action, chatComponent).newInstance(action.getField("SUBTITLE").get(null), subtitleComponent);
                 connection.getClass().getMethod("sendPacket", genericPacket).invoke(connection, subtitlePacket);
             }
-        } catch (Exception e) {
-            if (DEBUG) {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Failed to send title.", e);
-            } else {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Failed to send title to {0}. Is TextAPI updated?", player.getName());
-            }
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 

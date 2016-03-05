@@ -34,7 +34,10 @@ public class ActionBar {
 
     /**
      * Used to toggle debug messages. Disabled by default.
+     *
+     * @deprecated No longer in use.
      */
+    @Deprecated
     public static boolean DEBUG;
 
     private JSONObject json;
@@ -73,12 +76,8 @@ public class ActionBar {
                     component = ServerPackage.MINECRAFT.getClass("IChatBaseComponent$ChatSerializer").getMethod("a", String.class).invoke(null, json.toString()),
                     packet = ServerPackage.MINECRAFT.getClass("PacketPlayOutChat").getConstructor(ServerPackage.MINECRAFT.getClass("IChatBaseComponent"), byte.class).newInstance(component, (byte) 2);
             connection.getClass().getMethod("sendPacket", ServerPackage.MINECRAFT.getClass("Packet")).invoke(connection, packet);
-        } catch (Exception e) {
-            if (DEBUG) {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Failed to send action bar message.", e);
-            } else {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Failed to send action bar message to {0}. Is TextAPI updated?", player.getName());
-            }
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
