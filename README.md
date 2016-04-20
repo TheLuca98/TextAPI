@@ -30,7 +30,7 @@ import it in your IDE.
 ## Install
 If you use Maven, make sure to include TextAPI as a dependency by
 adding it to the `<dependencies>` section of your POM file:
-```
+```xml
 <dependency>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
@@ -42,12 +42,12 @@ the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin).
 
 ## Usage
 Creating a Title instance and sending it to a player is very simple:
-```
+```java
 Title title = new Title(title, subtitle, fadeIn, stay, fadeOut);
 title.send(player);
 ```
 Action bar messages work similarly:
-```
+```java
 ActionBar bar = new ActionBar("Hello world");
 bar.send(player);
 ```
