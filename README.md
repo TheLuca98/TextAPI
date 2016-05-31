@@ -3,7 +3,7 @@
 #### _Title and action bar APIs for Bukkit._
 
 ![JDK 1.7](https://img.shields.io/badge/JDK-1.7-orange.png)
-![Bukkit 1.9.2](https://img.shields.io/badge/Bukkit-1.9.2-blue.png)
+![Bukkit 1.9.4](https://img.shields.io/badge/Bukkit-1.9.4-blue.png)
 
 At the moment, Bukkit and Spigot API do not provide a way to use
 two important features that have been available with the release
@@ -30,11 +30,11 @@ import it in your IDE.
 ## Install
 If you use Maven, make sure to include TextAPI as a dependency by
 adding it to the `<dependencies>` section of your POM file:
-```
+```xml
 <dependency>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
-    <version>1.9.2-R2.1</version>
+    <version>1.9.4-R2.1</version>
 </dependency>
 ```
 You will also need to include TextAPI in your JAR file by using
@@ -42,12 +42,12 @@ the [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin).
 
 ## Usage
 Creating a Title instance and sending it to a player is very simple:
-```
+```java
 Title title = new Title(title, subtitle, fadeIn, stay, fadeOut);
 title.send(player);
 ```
 Action bar messages work similarly:
-```
+```java
 ActionBar bar = new ActionBar("Hello world");
 bar.send(player);
 ```
