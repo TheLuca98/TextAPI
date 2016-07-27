@@ -3,7 +3,7 @@
 #### _Title and action bar APIs for Bukkit._
 
 ![JDK 1.7](https://img.shields.io/badge/JDK-1.7-orange.png)
-![Bukkit 1.10](https://img.shields.io/badge/Bukkit-1.10-blue.png)
+![Bukkit 1.10.2](https://img.shields.io/badge/Bukkit-1.10.2-blue.png)
 
 At the moment, Bukkit and Spigot API do not provide a way to use
 two important features that have been available with the release
@@ -34,7 +34,7 @@ adding it to the `<dependencies>` section of your POM file:
 <dependency>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
-    <version>1.10-R2.1</version>
+    <version>1.10.2-R2.1</version>
 </dependency>
 ```
 You will also need to include TextAPI in your JAR file by using
