@@ -15,7 +15,7 @@ If you use Maven, we recommend adding TextAPI as a dependency in the `<dependenc
 <dependency>
   <groupId>io.github.theluca98</groupId>
   <artifactId>TextAPI</artifactId>
-  <version>1.10.2-R2.1</version>
+  <version>1.11-R2.1</version>
 </dependency>
 ```
 You can also allow Maven to automatically download TextAPI by adding our repository to the `<repositories>` section:
