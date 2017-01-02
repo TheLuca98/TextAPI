@@ -3,7 +3,7 @@
 #### _Title and action bar APIs for Bukkit._
 
 ![JDK 1.7](https://img.shields.io/badge/JDK-1.7-orange.png)
-![Bukkit 1.11](https://img.shields.io/badge/Bukkit-1.11-blue.png)
+![Bukkit 1.11.2](https://img.shields.io/badge/Bukkit-1.11-blue.png)
 
 At the moment, Bukkit and Spigot API do not provide a way to use two important features that have been available since the 
 release of Minecraft 1.8: titles and custom action bar messages. This extremely lightweight library aims to provide developers
@@ -15,7 +15,7 @@ If you use Maven, we recommend adding TextAPI as a dependency in the `<dependenc
 <dependency>
   <groupId>io.github.theluca98</groupId>
   <artifactId>TextAPI</artifactId>
-  <version>1.11-R2.1</version>
+  <version>1.11.2-R2.1</version>
 </dependency>
 ```
 You can also allow Maven to automatically download TextAPI by adding our repository to the `<repositories>` section:
