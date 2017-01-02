@@ -3,7 +3,7 @@
 #### _Title and action bar APIs for Bukkit._
 
 ![JDK 1.7](https://img.shields.io/badge/JDK-1.7-orange.png)
-![Bukkit 1.11.2](https://img.shields.io/badge/Bukkit-1.11-blue.png)
+![Bukkit 1.11.2](https://img.shields.io/badge/Bukkit-1.11.2-blue.png)
 
 At the moment, Bukkit and Spigot API do not provide a way to use two important features that have been available since the 
 release of Minecraft 1.8: titles and custom action bar messages. This extremely lightweight library aims to provide developers
