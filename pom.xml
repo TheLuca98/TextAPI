@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.theluca98</groupId>
     <artifactId>TextAPI</artifactId>
-    <version>1.12-R2.1</version>
+    <version>1.12.2-R2.2</version>
     <packaging>jar</packaging>
     <properties>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.12-R0.1-SNAPSHOT</version>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <repositories>
@@ -22,30 +24,21 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
     </repositories>
+    <distributionManagement>
+        <repository>
+            <id>luca98-plugins</id>
+            <url>https://api.bintray.com/maven/luca98/plugins/TextAPI/;publish=1</url>
+        </repository>
+    </distributionManagement>
     <build>
         <defaultGoal>clean install javadoc:javadoc</defaultGoal>
         <finalName>TextAPI</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.0.0-M1</version>
             </plugin>
         </plugins>
     </build>
-    <distributionManagement>
-      <repository>
-        <id>luca98-plugins</id>
-        <url>https://api.bintray.com/maven/luca98/plugins/TextAPI/;publish=1</url>
-      </repository>
-    </distributionManagement>
 </project>

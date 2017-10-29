@@ -22,18 +22,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONObject;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Represents a title that appears at the center of the screen.
  *
  * @author Luca
  */
 public class Title {
-
-    private JSONObject title, subtitle;
-    private int fadeIn, fadeOut, stay;
 
     /**
      * Used to toggle debug messages. Disabled by default.
@@ -42,6 +36,8 @@ public class Title {
      */
     @Deprecated
     public static boolean DEBUG;
+    private JSONObject title, subtitle;
+    private int fadeIn, fadeOut, stay;
 
     /**
      * Constructs a {@link Title} object.
@@ -78,6 +74,12 @@ public class Title {
         this.stay = stay;
     }
 
+    static JSONObject convert(String text) {
+        JSONObject json = new JSONObject();
+        json.put("text", text);
+        return json;
+    }
+
     /**
      * Sends the title to a specific player.
      *
@@ -86,28 +88,27 @@ public class Title {
     public void send(Player player) {
         Preconditions.checkNotNull(player);
         try {
-            Object handle = player.getClass().getMethod("getHandle").invoke(player),
-                    connection = handle.getClass().getField("playerConnection").get(handle);
+            Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
+            Object playerConnection = entityPlayer.getClass().getField("playerConnection").get(entityPlayer);
             // NMS Classes
-            Class<?> playPacket = ServerPackage.MINECRAFT.getClass("PacketPlayOutTitle"),
-                    genericPacket = ServerPackage.MINECRAFT.getClass("Packet"),
-                    chatComponent = ServerPackage.MINECRAFT.getClass("IChatBaseComponent"),
-                    serializer = ServerPackage.MINECRAFT.getClass("IChatBaseComponent$ChatSerializer"),
-                    action = ServerPackage.MINECRAFT.getClass("PacketPlayOutTitle$EnumTitleAction");
-            // Set the times
-            Object timesPacket = playPacket.getConstructor(int.class, int.class, int.class).newInstance(fadeIn, stay, fadeOut);
-            connection.getClass().getMethod("sendPacket", genericPacket).invoke(connection, timesPacket);
+            Class<?> clsPacketPlayOutTitle = ServerPackage.MINECRAFT.getClass("PacketPlayOutTitle");
+            Class<?> clsPacket = ServerPackage.MINECRAFT.getClass("Packet");
+            Class<?> clsIChatBaseComponent = ServerPackage.MINECRAFT.getClass("IChatBaseComponent");
+            Class<?> clsChatSerializer = ServerPackage.MINECRAFT.getClass("IChatBaseComponent$ChatSerializer");
+            Class<?> clsEnumTitleAction = ServerPackage.MINECRAFT.getClass("PacketPlayOutTitle$EnumTitleAction");
+            Object timesPacket = clsPacketPlayOutTitle.getConstructor(int.class, int.class, int.class).newInstance(fadeIn, stay, fadeOut);
+            playerConnection.getClass().getMethod("sendPacket", clsPacket).invoke(playerConnection, timesPacket);
             // Play the title packet
             if (title != null && !title.isEmpty()) {
-                Object titleComponent = serializer.getMethod("a", String.class).invoke(null, title.toString()),
-                        titlePacket = playPacket.getConstructor(action, chatComponent).newInstance(action.getField("TITLE").get(null), titleComponent);
-                connection.getClass().getMethod("sendPacket", genericPacket).invoke(connection, titlePacket);
+                Object titleComponent = clsChatSerializer.getMethod("a", String.class).invoke(null, title.toString());
+                Object titlePacket = clsPacketPlayOutTitle.getConstructor(clsEnumTitleAction, clsIChatBaseComponent).newInstance(clsEnumTitleAction.getField("TITLE").get(null), titleComponent);
+                playerConnection.getClass().getMethod("sendPacket", clsPacket).invoke(playerConnection, titlePacket);
             }
             // Play the subtitle packet
             if (subtitle != null && !subtitle.isEmpty()) {
-                Object subtitleComponent = serializer.getMethod("a", String.class).invoke(null, subtitle.toString()),
-                        subtitlePacket = playPacket.getConstructor(action, chatComponent).newInstance(action.getField("SUBTITLE").get(null), subtitleComponent);
-                connection.getClass().getMethod("sendPacket", genericPacket).invoke(connection, subtitlePacket);
+                Object subtitleComponent = clsChatSerializer.getMethod("a", String.class).invoke(null, subtitle.toString());
+                Object subtitlePacket = clsPacketPlayOutTitle.getConstructor(clsEnumTitleAction, clsIChatBaseComponent).newInstance(clsEnumTitleAction.getField("SUBTITLE").get(null), subtitleComponent);
+                playerConnection.getClass().getMethod("sendPacket", clsPacket).invoke(playerConnection, subtitlePacket);
             }
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -133,57 +134,12 @@ public class Title {
     }
 
     /**
-     * Getter for the text of the subtitle.
-     *
-     * @return Text of subtitle.
-     */
-    public JSONObject getSubtitle() {
-        return subtitle;
-    }
-
-    /**
-     * Getter for the fade-in time, in ticks.
-     *
-     * @return Fade-in ticks.
-     */
-    public int getFadeIn() {
-        return fadeIn;
-    }
-
-    /**
-     * Getter for the fade-out time, in ticks.
-     *
-     * @return Fade-out ticks.
-     */
-    public int getFadeOut() {
-        return fadeOut;
-    }
-
-    /**
-     * Getter for the stay time, in ticks.
-     *
-     * @return Stay ticks.
-     */
-    public int getStay() {
-        return stay;
-    }
-
-    /**
      * Setter for the text of the main title.
      *
      * @param title New main title text.
      */
     public void setTitle(String title) {
         this.title = convert(title);
-    }
-
-    /**
-     * Setter for the text of the subtitle.
-     *
-     * @param subtitle New subtitle text.
-     */
-    public void setSubtitle(String subtitle) {
-        this.subtitle = convert(subtitle);
     }
 
     /**
@@ -196,12 +152,39 @@ public class Title {
     }
 
     /**
+     * Getter for the text of the subtitle.
+     *
+     * @return Text of subtitle.
+     */
+    public JSONObject getSubtitle() {
+        return subtitle;
+    }
+
+    /**
+     * Setter for the text of the subtitle.
+     *
+     * @param subtitle New subtitle text.
+     */
+    public void setSubtitle(String subtitle) {
+        this.subtitle = convert(subtitle);
+    }
+
+    /**
      * Setter for the text of the subtitle.
      *
      * @param subtitle New subtitle text. Must be in /tellraw JSON format.
      */
     public void setSubtitle(JSONObject subtitle) {
         this.subtitle = subtitle;
+    }
+
+    /**
+     * Getter for the fade-in time, in ticks.
+     *
+     * @return Fade-in ticks.
+     */
+    public int getFadeIn() {
+        return fadeIn;
     }
 
     /**
@@ -214,6 +197,15 @@ public class Title {
     }
 
     /**
+     * Getter for the fade-out time, in ticks.
+     *
+     * @return Fade-out ticks.
+     */
+    public int getFadeOut() {
+        return fadeOut;
+    }
+
+    /**
      * Setter for the fade-out time, in ticks.
      *
      * @param fadeOut New fade-out ticks.
@@ -223,18 +215,21 @@ public class Title {
     }
 
     /**
+     * Getter for the stay time, in ticks.
+     *
+     * @return Stay ticks.
+     */
+    public int getStay() {
+        return stay;
+    }
+
+    /**
      * Setter for the stay time, in ticks.
      *
      * @param stay New stay ticks.
      */
     public void setStay(int stay) {
         this.stay = stay;
-    }
-
-    static JSONObject convert(String text) {
-        JSONObject json = new JSONObject();
-        json.put("text", text);
-        return json;
     }
 
 }

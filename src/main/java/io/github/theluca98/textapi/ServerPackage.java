@@ -30,6 +30,10 @@ enum ServerPackage {
         this.path = path;
     }
 
+    public static String getServerVersion() {
+        return Bukkit.getServer().getClass().getPackage().getName().substring(23);
+    }
+
     @Override
     public String toString() {
         return path;
@@ -37,10 +41,6 @@ enum ServerPackage {
 
     public Class<?> getClass(String className) throws ClassNotFoundException {
         return Class.forName(this.toString() + "." + className);
-    }
-
-    public static String getServerVersion() {
-        return Bukkit.getServer().getClass().getPackage().getName().substring(23);
     }
 
 }
